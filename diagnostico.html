@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+
+<head>
+  <meta name="robots" content="noindex, nofollow">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Test financiero · ¿En qué nivel estás? | Chusa Fernández</title>
+    <meta name="description" content="8 preguntas. 3 minutos. Descubre si estás en Caos, Control, Claridad o Libertad.">
+    <link rel="stylesheet" href="assets/css/alquimia.css">
+</head>
+
+<body><a class="skip-link" href="#main">Saltar al contenido</a>
+  <header class="site-header" aria-label="Cabecera principal">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Chusa Fernández, inicio">
+        <span class="brand-name">Chusa Fernández</span>
+        <span class="brand-role">Mentora y consultora de estrategia financiera</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <span class="sr-only nav-label">Abrir menú</span>
+      </button>
+      <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
+        <ul class="nav-list">
+          <li><a href="sobre-mi.html">Sobre mí</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="cursos.html">Formación</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="diagnostico.html" aria-current="page">Mi diagnóstico</a></li>
+          <li><a class="nav-cta" href="agendar.html">Agendar una conversación</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+    <main id="main">
+        <section id="intro" class="page-hero" data-theme="dark">
+            <div class="container page-hero__grid">
+                <div>
+                    <p class="eyebrow">Diagnóstico financiero</p>
+                    <h1>¿En qué nivel financiero estás?</h1>
+                    <p class="page-hero__lead">8 preguntas. 3 minutos. Una fotografía real de tu situación financiera.
+                        Al final sabrás dónde estás y cuál es tu siguiente paso.</p>
+                    <div class="badge-row" aria-label="Niveles"><span class="badge">Caos</span><span
+                            class="badge">Control</span><span class="badge">Claridad</span><span
+                            class="badge">Libertad</span></div><div class="actions">
+                        <button id="start" class="btn btn--primary" type="button">Empezar el diagnóstico</button>
+                    </div>
+                </div>
+                <figure class="page-hero__media">
+                    <!-- Foto: Unsplash License. Original:
+                         unsplash.com/photos/photo-1544377193-33dcf4d68fb5 -->
+                    <img src="lumen-images/diagnostico/diagnostico-1200.webp"
+                        srcset="lumen-images/diagnostico/diagnostico-800.webp 800w,
+                                lumen-images/diagnostico/diagnostico-1200.webp 1200w"
+                        sizes="(max-width: 48rem) calc(100vw - 40px), min(46vw, 620px)"
+                        width="1200" height="675" fetchpriority="high" decoding="async"
+                        alt="Cuaderno de seguimiento financiero y una hoja de presupuesto mensual sobre una mesa">
+                </figure>
+            </div>
+        </section>
+        <section id="quiz-section" class="section" hidden>
+            <div class="container">
+                <form id="quiz" class="quiz" novalidate>
+                    <div class="quiz__progress">
+                        <p id="progress-label">Pregunta 1 de 8</p><progress id="progress" value="1" max="8"
+                            aria-labelledby="progress-label">1 de 8</progress>
+                    </div>
+                    <fieldset class="quiz__question">
+                        <legend id="question"></legend>
+                        <div id="options" class="quiz__options"></div>
+                    </fieldset>
+                    <p id="quiz-error" class="form-message form-message--error" role="alert">Elige una respuesta para
+                        continuar.</p>
+                    <div class="quiz__nav"><button id="prev" class="btn btn--secondary"
+                            type="button">Anterior</button><button id="next" class="btn btn--primary"
+                            type="button">Siguiente</button></div>
+                </form>
+            </div>
+        </section>
+        <section id="capture-section" class="section section--alt" hidden>
+            <div class="container narrow">
+                <form id="capture" class="lead-form">
+                    <h2 class="form-wide">Tu diagnóstico está listo</h2>
+                    <p class="form-wide">Déjame tu email para ver el resultado y recibir recomendaciones para tu nivel.
+                    </p>
+                    <div class="form-field"><label for="name">Nombre *</label><input id="name" autocomplete="name"
+                            placeholder="Tu nombre" required></div>
+                    <div class="form-field"><label for="email">Email *</label><input id="email" type="email"
+                            autocomplete="email" placeholder="tu@email.com" required></div><label
+                        class="check-field form-wide"><input type="checkbox" required><span>Acepto la Política de
+                            Privacidad y recibir mis recomendaciones.</span></label>
+                    <p class="form-note form-wide">Tus datos están protegidos. Puedes darte de baja en cualquier
+                        momento.</p><button class="btn btn--primary form-wide">Ver mi resultado</button>
+                </form>
+            </div>
+        </section>
+        <section id="result-section" class="section" hidden>
+            <div id="result" class="container diagnostic-result" tabindex="-1">
+                <p class="badge">Resultado del diagnóstico</p>
+                <h2 id="result-title"></h2>
+                <p id="result-subtitle" class="page-hero__lead"></p>
+                <p id="result-description"></p>
+                <div class="level-scale" role="img" id="scale">
+                    <ol>
+                        <li data-level="0">Caos</li>
+                        <li data-level="1">Control</li>
+                        <li data-level="2">Claridad</li>
+                        <li data-level="3">Libertad</li>
+                    </ol>
+                </div>
+                <div class="result-advice">
+                    <h2>Lo primero</h2>
+                    <p id="result-first"></p>
+                    <h3>Mi recomendación</h3>
+                    <p id="result-rec"></p>
+                </div>
+                <div class="actions"><a id="result-primary" class="btn btn--primary" href="#"></a><a
+                        id="result-secondary" class="btn btn--secondary" href="#"></a></div><button id="restart" class="btn btn--ghost quiz__restart" type="button">Repetir diagnóstico</button>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-nav-grid">
+        <div class="footer-brand">
+          <span class="brand-name">Chusa Fernández</span>
+          <p>Mentora, formadora y consultora financiera independiente.</p>
+        </div>
+        <div class="footer-col">
+          <h2>Navegación</h2>
+          <nav aria-label="Navegación del pie">
+            <a href="sobre-mi.html">Sobre mí</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="cursos.html">Formación</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="agendar.html">Agendar sesión</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h2>Recursos</h2>
+          <nav aria-label="Recursos">
+            <a href="lead-magnet.html">Diagnóstico gratuito</a>
+            <a href="diagnostico.html">Test online</a>
+            <a href="infoproducto.html">Finanzas Sin Sustos</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h2>Contacto</h2>
+          <address>
+            <a href="mailto:info@chusafernandez.es">info@chusafernandez.es</a>
+            <a href="tel:+34616671203">616 671 203</a>
+          </address>
+        </div>
+      </div>
+      <div class="footer-meta">
+        <span>© 2026 Chusa Fernández · Oviedo, Asturias</span>
+        <span class="footer-claim">Del caos a la claridad. De la claridad, a la libertad.</span>
+      </div>
+      <p class="footer-disclaimer">Esto no es asesoramiento financiero. Es educación y acompañamiento estratégico. Chusa Fernández Villamil no es asesora registrada ante la CNMV ni recomienda productos de inversión. Las decisiones sobre tu dinero son siempre tuyas.</p>
+    </div>
+  </footer>
+    <script>
+        const questions = [
+            { q: '¿Sabes exactamente cuánto entra y cuánto sale cada mes?', a: ['No, tengo una idea aproximada.', 'Sé cuánto entra, pero no sé bien cuánto sale.', 'Lo apunto, pero no lo reviso con frecuencia.', 'Sí, tengo un control claro de ingresos y gastos.'] },
+            { q: '¿Tienes un presupuesto mensual o semanal que sigues?', a: ['No, nunca he hecho uno.', 'Intenté hacer uno, pero lo dejé.', 'Tengo algo, pero no lo actualizo.', 'Sí, lo reviso y ajusto cada mes.'] },
+            { q: '¿Tienes un fondo para imprevistos?', a: ['No, no tengo ahorros.', 'Tengo algo, pero menos de un mes de gastos.', 'Tengo entre 1 y 3 meses de gastos fijos.', 'Tengo 6 meses o más de gastos fijos cubiertos.'] },
+            { q: '¿Tienes deudas pendientes?', a: ['Sí, varias y me cuestan gestionar.', 'Sí, pero las tengo controladas.', 'Tengo alguna, pero es manejable.', 'No tengo deudas, o estoy liquidándolas.'] },
+            { q: '¿Tienes coberturas ante una baja, incapacidad o cese?', a: ['No, no tengo ninguna cobertura.', 'Tengo lo básico, pero no sé si basta.', 'Tengo coberturas revisadas hace menos de 2 años.', 'Sí, están alineadas con mi situación actual.'] },
+            { q: '¿Tienes metas financieras claras a medio y largo plazo?', a: ['No, vivo al día.', 'Tengo ideas sueltas, pero nada por escrito.', 'Tengo metas, pero sin un plan concreto.', 'Sí, tengo metas con plazos y un plan.'] },
+            { q: '¿Has invertido alguna vez?', a: ['No, nunca he invertido.', 'Tengo un plan de pensiones del trabajo.', 'He empezado, pero sin estrategia clara.', 'Sí, tengo una cartera diversificada.'] },
+            { q: '¿Separas tus finanzas personales de las de tu negocio?', a: ['No, todo pasa por la misma cuenta.', 'Intento separarlas, pero se mezclan.', 'Tengo cuentas separadas, pero reviso poco.', 'Sí, y reviso el negocio cada mes.'] }
+        ];
+        const results = [
+            { title: 'Nivel: Caos', sub: 'Tus finanzas necesitan una fotografía urgente.', desc: 'Ahora mismo se sienten como una habitación desordenada. No sabes bien cuánto entra, cuánto sale ni dónde se escapa el dinero.', first: 'No es un problema tuyo. Es un problema de método. Lo primero es ver tu situación sin juicios.', rec: 'Dedica 30 minutos a la plantilla gratuita Finanzas Sin Sustos.', p: 'Descargar mi plantilla gratuita', ph: 'lead-magnet.html', s: 'Reservar mi sesión gratuita', sh: 'agendar.html' },
+            { title: 'Nivel: Control', sub: 'Tienes una base, pero falta estructura.', desc: 'Controlas lo básico, pero tu sistema aún no es sólido: falta colchón, metas concretas o coberturas revisadas.', first: 'Ya tienes conciencia. Ahora toca construir estructura.', rec: 'Una sesión de 60 minutos puede ayudarte a diseñar tu hoja de ruta.', p: 'Reservar mi sesión estratégica', ph: 'agendar.html', s: 'Descargar la plantilla', sh: 'lead-magnet.html' },
+            { title: 'Nivel: Claridad', sub: 'Tu base es sólida. Es momento de crecer.', desc: 'Tienes control, colchón y metas claras. Tu siguiente paso es hacer crecer lo que has construido.', first: 'Ya tienes claridad y disciplina. Ahora toca que tu dinero trabaje contigo.', rec: 'Un acompañamiento independiente puede ayudarte a invertir con criterio.', p: 'Reservar mi sesión estratégica', ph: 'agendar.html', s: 'Conocer asesoramiento', sh: 'servicios.html#asesoramiento' },
+            { title: 'Nivel: Libertad', sub: 'Tus finanzas trabajan para ti.', desc: 'Tienes base, coberturas, inversión diversificada y metas con plan. Tus finanzas son un sistema.', first: 'Mantener lo construido y seguir creciendo.', rec: 'Si quieres una mirada externa e independiente, estoy aquí.', p: 'Hablemos', ph: 'agendar.html', s: 'Conocer mi camino', sh: 'sobre-mi.html' }
+        ];
+        let index = 0; const answers = Array(8).fill(null); const intro = document.querySelector('#intro'), quizSection = document.querySelector('#quiz-section'), captureSection = document.querySelector('#capture-section'), resultSection = document.querySelector('#result-section');
+        function render() { document.querySelector('#progress-label').textContent = `Pregunta ${index + 1} de 8`; document.querySelector('#progress').value = index + 1; const legend = document.querySelector('#question'); legend.textContent = questions[index].q; document.querySelector('#options').innerHTML = questions[index].a.map((x, i) => `<label class="radio-card"><input type="radio" name="q${index}" value="${i}" ${answers[index] === i ? 'checked' : ''}><span>${x}</span></label>`).join(''); document.querySelector('#prev').disabled = index === 0; document.querySelector('#next').textContent = index === 7 ? 'Terminar' : 'Siguiente'; document.querySelector('#quiz-error').dataset.visible = 'false'; legend.setAttribute('tabindex', '-1'); legend.focus() }
+        document.querySelector('#start').onclick = () => { intro.hidden = true; quizSection.hidden = false; render() };
+        document.querySelector('#prev').onclick = () => { const chosen = document.querySelector('input[type=radio]:checked'); if (chosen) answers[index] = +chosen.value; if (index > 0) { index--; render() } };
+        document.querySelector('#next').onclick = () => { const chosen = document.querySelector('input[type=radio]:checked'); if (!chosen) { document.querySelector('#quiz-error').dataset.visible = 'true'; document.querySelector('input[type=radio]').focus(); return } answers[index] = +chosen.value; if (index < 7) { index++; render() } else { quizSection.hidden = true; captureSection.hidden = false; document.querySelector('#name').focus() } };
+        document.querySelector('#capture').onsubmit = (e) => { e.preventDefault(); if (!e.currentTarget.checkValidity()) { e.currentTarget.reportValidity(); return } const score = answers.reduce((a, b) => a + b, 0), level = score <= 6 ? 0 : score <= 12 ? 1 : score <= 18 ? 2 : 3, r = results[level]; captureSection.hidden = true; resultSection.hidden = false; document.querySelector('#result-title').textContent = r.title; document.querySelector('#result-subtitle').textContent = r.sub; document.querySelector('#result-description').textContent = r.desc; document.querySelector('#result-first').textContent = r.first; document.querySelector('#result-rec').textContent = r.rec; const p = document.querySelector('#result-primary'), s = document.querySelector('#result-secondary'); p.textContent = r.p; p.href = r.ph; s.textContent = r.s; s.href = r.sh; document.querySelectorAll('#scale li').forEach((li, i) => i === level ? li.setAttribute('aria-current', 'step') : li.removeAttribute('aria-current')); document.querySelector('#scale').setAttribute('aria-label', `${r.title}, puntuación ${score} de 24`); document.querySelector('#result').focus() };
+        document.querySelector('#restart').onclick = () => { answers.fill(null); index = 0; resultSection.hidden = true; intro.hidden = false; document.querySelector('#start').focus() };
+    </script>
+  <script src="assets/js/alquimia.js"></script>
+</body>
+
+</html>

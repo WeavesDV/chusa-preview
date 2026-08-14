@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="es" data-theme="light">
+<html class="diagnostico" lang="es" data-theme="light">
 
 <head>
   <meta name="robots" content="noindex, nofollow">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Test financiero · ¿En qué nivel estás? | Chusa Fernández</title>
-    <meta name="description" content="8 preguntas. 3 minutos. Descubre si estás en Caos, Control, Claridad o Libertad.">
+    <title>Test de salud financiera · ¿Tu dinero tiene a dónde ir? | Chusa Fernández</title>
+    <meta name="description" content="Test gratuito de salud financiera personal. 8 preguntas, 3 minutos y resultado inmediato: descubre si estás en Caos, Control, Claridad o Libertad.">
     <link rel="stylesheet" href="assets/css/alquimia.css">
 </head>
 
@@ -38,14 +38,18 @@
         <section id="intro" class="page-hero" data-theme="dark">
             <div class="container page-hero__grid">
                 <div>
-                    <p class="eyebrow">Diagnóstico financiero</p>
-                    <h1>¿En qué nivel financiero estás?</h1>
-                    <p class="page-hero__lead">8 preguntas. 3 minutos. Una fotografía real de tu situación financiera.
-                        Al final sabrás dónde estás y cuál es tu siguiente paso.</p>
+                    <p class="eyebrow">Test gratuito de salud financiera</p>
+                    <h1>¿Tu dinero tiene a dónde ir?</h1>
+                    <p class="page-hero__lead">Descubre en 3 minutos por qué el dinero desaparece cada mes — y qué
+                        hacer para que no vuelva a pasar.</p>
+                    <p>Este test gratuito de salud financiera personal te da una fotografía real de cómo estás
+                        gestionando tu dinero ahora mismo. Sin tecnicismos, sin juicios. Solo claridad sobre tu
+                        situación financiera real y los próximos pasos concretos para mejorarla.</p>
+                    <p class="diagnostico__meta">8 preguntas · 3 minutos · Resultado inmediato</p>
                     <div class="badge-row" aria-label="Niveles"><span class="badge">Caos</span><span
                             class="badge">Control</span><span class="badge">Claridad</span><span
                             class="badge">Libertad</span></div><div class="actions">
-                        <button id="start" class="btn btn--primary" type="button">Empezar el diagnóstico</button>
+                        <button id="start" class="btn btn--primary" type="button">Descubrir mi nivel</button>
                     </div>
                 </div>
                 <figure class="page-hero__media">
@@ -58,6 +62,11 @@
                         width="1200" height="675" fetchpriority="high" decoding="async"
                         alt="Cuaderno de seguimiento financiero y una hoja de presupuesto mensual sobre una mesa">
                 </figure>
+            </div>
+            <div class="container diagnostico__prompt">
+                <p>¿No sabes en qué nivel financiero estás? ¿Sientes que gastas bien pero nunca te sobra nada?
+                    ¿Quieres empezar a controlar tus finanzas personales pero no sabes por dónde? Este diagnóstico es
+                    tu punto de partida.</p>
             </div>
         </section>
         <section id="quiz-section" class="section" hidden>
@@ -101,21 +110,26 @@
                 <p class="badge">Resultado del diagnóstico</p>
                 <h2 id="result-title"></h2>
                 <p id="result-subtitle" class="page-hero__lead"></p>
-                <p id="result-description"></p>
-                <div class="level-scale" role="img" id="scale">
-                    <ol>
-                        <li data-level="0">Caos</li>
-                        <li data-level="1">Control</li>
-                        <li data-level="2">Claridad</li>
-                        <li data-level="3">Libertad</li>
-                    </ol>
+                <div id="result-description" class="result-body"></div>
+                <div class="result-scale">
+                    <h3>Posición en el recorrido</h3>
+                    <div class="level-scale" role="img" id="scale">
+                        <ol>
+                            <li data-level="0">Caos</li>
+                            <li data-level="1">Control</li>
+                            <li data-level="2">Claridad</li>
+                            <li data-level="3">Libertad</li>
+                        </ol>
+                    </div>
+                    <p id="scale-caption" class="result-scale__caption"></p>
                 </div>
                 <div class="result-advice">
-                    <h2>Lo primero</h2>
-                    <p id="result-first"></p>
                     <h3>Mi recomendación</h3>
-                    <p id="result-rec"></p>
+                    <p id="result-rec-intro" hidden></p>
+                    <ul id="result-rec" class="feature-list"></ul>
+                    <p id="result-offer" class="result-advice__offer"></p>
                 </div>
+                <p id="result-aviso" class="form-message form-message--error" role="status"></p>
                 <div class="actions"><a id="result-primary" class="btn btn--primary" href="#"></a><a
                         id="result-secondary" class="btn btn--secondary" href="#"></a></div><button id="restart" class="btn btn--ghost quiz__restart" type="button">Repetir diagnóstico</button>
             </div>
@@ -173,18 +187,132 @@
             { q: '¿Has invertido alguna vez?', a: ['No, nunca he invertido.', 'Tengo un plan de pensiones del trabajo.', 'He empezado, pero sin estrategia clara.', 'Sí, tengo una cartera diversificada.'] },
             { q: '¿Separas tus finanzas personales de las de tu negocio?', a: ['No, todo pasa por la misma cuenta.', 'Intento separarlas, pero se mezclan.', 'Tengo cuentas separadas, pero reviso poco.', 'Sí, y reviso el negocio cada mes.'] }
         ];
+        /* Copy de niveles: texto literal de Chusa (email 14-08-2026).
+           desc y rec son arrays porque cada nivel lleva varios parrafos y una
+           lista de acciones; recIntro y s son opcionales. */
         const results = [
-            { title: 'Nivel: Caos', sub: 'Tus finanzas necesitan una fotografía urgente.', desc: 'Ahora mismo se sienten como una habitación desordenada. No sabes bien cuánto entra, cuánto sale ni dónde se escapa el dinero.', first: 'No es un problema tuyo. Es un problema de método. Lo primero es ver tu situación sin juicios.', rec: 'Dedica 30 minutos a la plantilla gratuita Finanzas Sin Sustos.', p: 'Descargar mi plantilla gratuita', ph: 'lead-magnet.html', s: 'Reservar mi sesión gratuita', sh: 'agendar.html' },
-            { title: 'Nivel: Control', sub: 'Tienes una base, pero falta estructura.', desc: 'Controlas lo básico, pero tu sistema aún no es sólido: falta colchón, metas concretas o coberturas revisadas.', first: 'Ya tienes conciencia. Ahora toca construir estructura.', rec: 'Una sesión de 60 minutos puede ayudarte a diseñar tu hoja de ruta.', p: 'Reservar mi sesión estratégica', ph: 'agendar.html', s: 'Descargar la plantilla', sh: 'lead-magnet.html' },
-            { title: 'Nivel: Claridad', sub: 'Tu base es sólida. Es momento de crecer.', desc: 'Tienes control, colchón y metas claras. Tu siguiente paso es hacer crecer lo que has construido.', first: 'Ya tienes claridad y disciplina. Ahora toca que tu dinero trabaje contigo.', rec: 'Un acompañamiento independiente puede ayudarte a invertir con criterio.', p: 'Reservar mi sesión estratégica', ph: 'agendar.html', s: 'Conocer asesoramiento', sh: 'servicios.html#asesoramiento' },
-            { title: 'Nivel: Libertad', sub: 'Tus finanzas trabajan para ti.', desc: 'Tienes base, coberturas, inversión diversificada y metas con plan. Tus finanzas son un sistema.', first: 'Mantener lo construido y seguir creciendo.', rec: 'Si quieres una mirada externa e independiente, estoy aquí.', p: 'Hablemos', ph: 'agendar.html', s: 'Conocer mi camino', sh: 'sobre-mi.html' }
+            {
+                title: 'Nivel: Caos',
+                sub: 'Tu punto de partida es este.',
+                desc: [
+                    'Ahora mismo tus finanzas se sienten como una habitación desordenada. No sabes bien cuánto entra, cuánto sale ni dónde se escapa el dinero cada mes.',
+                    'No es un problema tuyo. Es un problema de método. Y los métodos se aprenden.',
+                    'El primer paso no es ahorrar más ni gastar menos. Es ver con claridad lo que está pasando, sin juicios, sin agobio.'
+                ],
+                caption: 'Estás aquí. Y hay camino.',
+                rec: [
+                    'Anota todo lo que entra y sale.',
+                    'Abre una cuenta separada solo para emergencias, aunque sea con poco.',
+                    'Identifica los 3 gastos no esenciales que más se repiten cada mes.',
+                    'Fija una cantidad de ahorro antes de gastar, por pequeña que sea.'
+                ],
+                offer: 'Para ayudarte, te regalo «El primer diagnóstico de tus finanzas». Una plantilla gratuita que te da la fotografía real de tu mes en 30 minutos. El primer paso hacia la claridad. Sin fórmulas complicadas, sin tecnicismos.',
+                p: 'Descargar primer diagnóstico de mis finanzas', ph: 'lead-magnet.html',
+                s: 'Reservar tu sesión gratuita de Claridad', sh: 'agendar.html'
+            },
+            {
+                title: 'Nivel: Control',
+                sub: 'Tienes una base. Ahora construye lo que queda.',
+                desc: [
+                    'Controlas lo básico y eso ya es mucho más de lo que hace la mayoría.',
+                    'Lo que sigue es pasar de controlar a construir. Colchón de tranquilidad, metas concretas, coberturas revisadas, ahorro con intención. No todo a la vez — en el orden correcto.',
+                    'La diferencia entre donde estás y dónde quieres estar no es grande. Es un sistema.'
+                ],
+                caption: 'Ya superaste el primero. El siguiente es tuyo.',
+                recIntro: 'Tienes conciencia, pero necesitas datos concretos.',
+                rec: [
+                    'Calcula exactamente cuánto necesitas en tu fondo de emergencia.',
+                    'Revisa si tienes algún gasto que puedas reducir.',
+                    'Infórmate sobre opciones de ahorro con rentabilidad real más allá del banco.',
+                    'Define un objetivo financiero concreto para los próximos 12 meses.'
+                ],
+                offer: 'Descarga gratis «El primer diagnóstico de tus finanzas» y en 30 minutos tendrás la fotografía exacta de tu mes: qué entra, qué sale, cuánto te queda y si vas en la dirección correcta. Con esos números encima de la mesa, el camino se aclara.',
+                p: 'Descargar primer diagnóstico de mis finanzas', ph: 'lead-magnet.html',
+                s: 'Reservar tu sesión gratuita de Claridad', sh: 'agendar.html'
+            },
+            {
+                title: 'Nivel: Claridad',
+                sub: 'Has construido algo sólido. Ahora hazlo crecer.',
+                desc: [
+                    'Tienes control de tu dinero, un colchón de emergencia y metas concretas. Eso no es poca cosa: es exactamente donde la mayoría nunca llega.',
+                    'El siguiente paso no es hacer más de lo mismo. Es hacer que tu dinero trabaje para ti con criterio, con estrategia y sin dejarlo dormido en el banco.',
+                    'Guardar no es lo mismo que invertir. Y tú ya estás lista para dar ese salto.'
+                ],
+                caption: 'Estás a un paso de la libertad.',
+                rec: [
+                    'Revisa la rentabilidad real de tus ahorros frente a la inflación actual.',
+                    'Explora opciones de inversión alineadas con tu perfil y horizonte temporal.',
+                    'Diversifica: no todo en un solo producto ni en el mismo banco.',
+                    'Calcula qué necesitas para ser financieramente libre y cuándo puedes llegar.'
+                ],
+                offer: 'Si quieres, en una sesión estratégica evaluamos juntas tu plan de inversión personalizado. Qué vehículos tienen sentido para tu perfil, en qué orden y con qué criterio. Sin productos que no utilizaría yo misma.',
+                p: 'Reservar mi sesión estratégica', ph: 'agendar.html'
+            },
+            {
+                title: 'Nivel: Libertad',
+                sub: 'Lo conseguiste. Tu dinero trabaja mientras tú decides.',
+                desc: [
+                    'Tienes base sólida, coberturas revisadas, inversión diversificada y metas con plan. No es suerte: es el resultado de decisiones conscientes tomadas en el orden correcto.',
+                    'En este nivel el trabajo no es empezar, es optimizar, proteger lo construido y asegurarte de que las decisiones de hoy tienen el máximo impacto a largo plazo.',
+                    'A veces la mirada más valiosa es la de alguien de fuera que ve lo que tú ya no ves.'
+                ],
+                caption: 'Has recorrido el camino completo.',
+                rec: [
+                    'Revisa tu estrategia de inversión anualmente con un profesional de confianza.',
+                    'Asegúrate de que tu protección está al día.',
+                    'Considera otros vehículos de inversión más eficientes.'
+                ],
+                offer: 'Si quieres una revisión estratégica independiente, revisar lo construido o diseñar el siguiente nivel, hablemos. Sin compromiso, sin productos que no utilizaría yo misma.',
+                p: 'Hablemos', ph: 'agendar.html'
+            }
         ];
+        const NIVELES = ['caos', 'control', 'claridad', 'libertad'];
         let index = 0; const answers = Array(8).fill(null); const intro = document.querySelector('#intro'), quizSection = document.querySelector('#quiz-section'), captureSection = document.querySelector('#capture-section'), resultSection = document.querySelector('#result-section');
         function render() { document.querySelector('#progress-label').textContent = `Pregunta ${index + 1} de 8`; document.querySelector('#progress').value = index + 1; const legend = document.querySelector('#question'); legend.textContent = questions[index].q; document.querySelector('#options').innerHTML = questions[index].a.map((x, i) => `<label class="radio-card"><input type="radio" name="q${index}" value="${i}" ${answers[index] === i ? 'checked' : ''}><span>${x}</span></label>`).join(''); document.querySelector('#prev').disabled = index === 0; document.querySelector('#next').textContent = index === 7 ? 'Terminar' : 'Siguiente'; document.querySelector('#quiz-error').dataset.visible = 'false'; legend.setAttribute('tabindex', '-1'); legend.focus() }
         document.querySelector('#start').onclick = () => { intro.hidden = true; quizSection.hidden = false; render() };
         document.querySelector('#prev').onclick = () => { const chosen = document.querySelector('input[type=radio]:checked'); if (chosen) answers[index] = +chosen.value; if (index > 0) { index--; render() } };
         document.querySelector('#next').onclick = () => { const chosen = document.querySelector('input[type=radio]:checked'); if (!chosen) { document.querySelector('#quiz-error').dataset.visible = 'true'; document.querySelector('input[type=radio]').focus(); return } answers[index] = +chosen.value; if (index < 7) { index++; render() } else { quizSection.hidden = true; captureSection.hidden = false; document.querySelector('#name').focus() } };
-        document.querySelector('#capture').onsubmit = (e) => { e.preventDefault(); if (!e.currentTarget.checkValidity()) { e.currentTarget.reportValidity(); return } const score = answers.reduce((a, b) => a + b, 0), level = score <= 6 ? 0 : score <= 12 ? 1 : score <= 18 ? 2 : 3, r = results[level]; captureSection.hidden = true; resultSection.hidden = false; document.querySelector('#result-title').textContent = r.title; document.querySelector('#result-subtitle').textContent = r.sub; document.querySelector('#result-description').textContent = r.desc; document.querySelector('#result-first').textContent = r.first; document.querySelector('#result-rec').textContent = r.rec; const p = document.querySelector('#result-primary'), s = document.querySelector('#result-secondary'); p.textContent = r.p; p.href = r.ph; s.textContent = r.s; s.href = r.sh; document.querySelectorAll('#scale li').forEach((li, i) => i === level ? li.setAttribute('aria-current', 'step') : li.removeAttribute('aria-current')); document.querySelector('#scale').setAttribute('aria-label', `${r.title}, puntuación ${score} de 24`); document.querySelector('#result').focus() };
+        document.querySelector('#capture').onsubmit = (e) => {
+            e.preventDefault();
+            if (!e.currentTarget.checkValidity()) { e.currentTarget.reportValidity(); return }
+            const score = answers.reduce((a, b) => a + b, 0);
+            const level = score <= 6 ? 0 : score <= 12 ? 1 : score <= 18 ? 2 : 3;
+            const r = results[level];
+            captureSection.hidden = true; resultSection.hidden = false;
+            document.querySelector('#result-title').textContent = r.title;
+            document.querySelector('#result-subtitle').textContent = r.sub;
+            const desc = document.querySelector('#result-description');
+            desc.replaceChildren(...r.desc.map((t) => { const el = document.createElement('p'); el.textContent = t; return el }));
+            const recIntro = document.querySelector('#result-rec-intro');
+            recIntro.textContent = r.recIntro || ''; recIntro.hidden = !r.recIntro;
+            document.querySelector('#result-rec').replaceChildren(...r.rec.map((t) => { const el = document.createElement('li'); el.textContent = t; return el }));
+            document.querySelector('#result-offer').textContent = r.offer;
+            document.querySelector('#scale-caption').textContent = r.caption;
+            const p = document.querySelector('#result-primary'), sec = document.querySelector('#result-secondary');
+            p.textContent = r.p; p.href = r.ph;
+            /* Claridad y Libertad solo llevan CTA principal. */
+            if (r.s) { sec.textContent = r.s; sec.href = r.sh; sec.hidden = false } else { sec.hidden = true }
+            const scale = document.querySelector('#scale');
+            scale.dataset.active = level;
+            scale.querySelectorAll('li').forEach((li, i) => i === level ? li.setAttribute('aria-current', 'step') : li.removeAttribute('aria-current'));
+            scale.setAttribute('aria-label', `${r.title}. ${r.caption} Puntuación ${score} de 24.`);
+            document.querySelector('#result').focus();
+
+            /* El resultado ya esta en pantalla: el alta va detras y no la
+               bloquea. Si falla, se avisa sin quitarle el resultado a nadie. */
+            const aviso = document.querySelector('#result-aviso');
+            window.suscribir({
+                nombre: document.querySelector('#name').value,
+                email: document.querySelector('#email').value,
+                consentimiento: document.querySelector('#capture input[type=checkbox]').checked,
+                origen: 'test-diagnostico',
+                nivel: NIVELES[level],
+                puntuacion: score
+            }).catch((error) => {
+                aviso.textContent = `${error.message} Tu resultado sigue aquí, pero no te llegará por email.`;
+                aviso.dataset.visible = 'true'
+            })
+        };
         document.querySelector('#restart').onclick = () => { answers.fill(null); index = 0; resultSection.hidden = true; intro.hidden = false; document.querySelector('#start').focus() };
     </script>
   <script src="assets/js/alquimia.js"></script>

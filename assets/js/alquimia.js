@@ -22,6 +22,52 @@ document.querySelectorAll('form[data-demo]').forEach((form) => {
   });
 });
 
+/* Alta en la lista de correo.
+   El endpoint vive en la app de Next (/acciones/suscribir), que es quien
+   guarda la clave de MailerLite. Abriendo el HTML como fichero suelto no hay
+   servidor y el envio falla: por eso siempre se avisa en pantalla. */
+window.suscribir = async function (datos) {
+  const respuesta = await fetch('/acciones/suscribir', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(datos),
+  });
+  const cuerpo = await respuesta.json().catch(() => ({}));
+  if (!respuesta.ok) throw new Error(cuerpo.error || 'No hemos podido registrarte.');
+  return cuerpo;
+};
+
+/* Formularios de suscripcion. El valor de data-suscribir es el origen que se
+   guarda en MailerLite, para saber por que puerta entro cada contacto. */
+document.querySelectorAll('form[data-suscribir]').forEach((form) => {
+  const exito = form.querySelector('.form-message--success');
+  const fallo = form.querySelector('.form-message--error');
+  const boton = form.querySelector('button');
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+
+    [exito, fallo].forEach((aviso) => { if (aviso) aviso.dataset.visible = 'false'; });
+    if (boton) { boton.disabled = true; }
+
+    try {
+      await window.suscribir({
+        nombre: form.querySelector('input[autocomplete="name"]')?.value ?? '',
+        email: form.querySelector('input[type="email"]')?.value ?? '',
+        consentimiento: form.querySelector('input[type="checkbox"]')?.checked === true,
+        origen: form.dataset.suscribir,
+      });
+      if (exito) { exito.dataset.visible = 'true'; exito.setAttribute('tabindex', '-1'); exito.focus(); }
+      form.reset();
+    } catch (error) {
+      if (fallo) { fallo.textContent = error.message; fallo.dataset.visible = 'true'; fallo.setAttribute('tabindex', '-1'); fallo.focus(); }
+    } finally {
+      if (boton) { boton.disabled = false; }
+    }
+  });
+});
+
 /* Revelado al hacer scroll — mismo mecanismo y curva que el home.
    El home trae su propio PLAN inline y ya marca .has-anim antes de cargar
    este fichero, asi que ahi salimos sin tocar nada. */

@@ -2,7 +2,6 @@
 <html lang="es" data-theme="light">
 
 <head>
-  <meta name="robots" content="noindex, nofollow">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Formación · Cursos de finanzas | Chusa Fernández</title>
@@ -40,9 +39,9 @@
             <div class="container page-hero__grid">
                 <div>
                     <p class="eyebrow">Cursos online</p>
-                    <h1>Formación financiera práctica para autónomos y particulares</h1>
+                    <h1>Formación práctica para autónomos y particulares</h1>
                     <p class="page-hero__lead">Formación práctica para autónomos y particulares que quieren entender mejor sus finanzas y tomar mejores decisiones.</p>
-                    <p class="page-hero__lead">Ambos cursos están disponibles online, listos para empezar cuando quieras.</p>
+                    <p class="page-hero__lead">La lección 1 ya está disponible. A medida que se incorporen participantes, se liberarán las siguientes lecciones durante las semanas posteriores.</p>
                     <div class="actions">
                         <a class="btn btn--primary" href="#aviso">Quiero información</a>
                     </div>
@@ -58,7 +57,7 @@
                 <div class="section__head">
                     <p class="eyebrow">Formaciones disponibles</p>
                     <h2>Contenido para decidir con más claridad</h2>
-                    <p class="muted">Elige el curso que mejor encaje con tu momento y accede a todo el contenido desde el primer día.</p>
+                    <p class="muted">Empieza por la primera lección y avanza con las siguientes a medida que se vayan liberando.</p>
                 </div>
                 <div class="cards cards--2">
                     <article class="service-card"><span class="badge">Disponible online</span>
@@ -67,14 +66,13 @@
                         <p>Descubre cuánto dinero ganas realmente con tu negocio, dónde se te está escapando y qué puedes hacer para mejorar tu rentabilidad.</p>
                         <p>Para autónomos que facturan, pero llegan a final de mes preguntándose: «¿Dónde está el dinero?». Aprende a conocer tus números, detectar fugas y tomar decisiones con datos, no con intuición.</p>
                         <p>En pocas horas pasarás de «sé lo que facturo, pero no sé lo que gano» a tener claro cuánto gana realmente tu negocio, sin complicarte ni depender de nadie.</p>
-                        <p class="mono">Online · Disponible ahora</p><a href="#aviso">Quiero información sobre este curso</a>
+                        <p class="mono">Online · Lección 1 disponible</p><a href="#aviso">Quiero información sobre este curso</a>
                     </article>
                     <article class="service-card"><span class="badge">Disponible online</span>
                         <h3>Cómo Aumentar tus Beneficios en 3 Meses sin Intercambiar Más Tiempo por Dinero</h3>
-                        <p><strong>De trabajar más a hacer tu negocio más rentable.</strong></p>
-                        <p>Aprende a optimizar precios, costes, servicios y beneficio para que tu negocio gane más sin que tú tengas que intercambiar más tiempo por dinero.</p>
+                        <p>Aprende a mejorar la rentabilidad de tu negocio optimizando precios, costes y servicios, para ganar más sin tener que trabajar más horas.</p>
                         <p>Para autónomos, emprendedores y pequeños negocios que trabajan mucho y facturan, pero sienten que el esfuerzo no se refleja en sus beneficios.</p>
-                        <p class="mono">Online · Disponible ahora</p><a href="#aviso">Quiero información sobre este curso</a>
+                        <p class="mono">Online · Lección 1 disponible</p><a href="#aviso">Quiero información sobre este curso</a>
                     </article>
                 </div>
             </div>
@@ -86,6 +84,7 @@
                     <h2>¿Quieres llevar la educación financiera a tu empresa u organización?</h2>
                     <p class="muted">Diseño formaciones adaptadas a las necesidades de empresas, organizaciones y equipos, con un enfoque práctico y aplicable al día a día.</p>
                     <p class="muted">Si quieres ayudar a tu equipo a mejorar su relación con el dinero, tomar mejores decisiones financieras y ganar tranquilidad, cuéntame qué necesitas y diseñamos juntos la formación que mejor encaje con vuestro equipo.</p>
+                    <div class="actions"><a class="btn btn--primary" href="#aviso">Quiero diseñar una formación para mi equipo</a></div>
                 </div>
             </div>
         </section>
@@ -97,15 +96,20 @@
                             autocomplete="name" placeholder="Tu nombre" required></div>
                     <div class="form-field"><label for="email">Email *</label><input id="email" name="email"
                             type="email" autocomplete="email" placeholder="tu@email.com" required></div>
-                    <div class="form-field form-wide"><label for="course">¿Qué curso te interesa?</label><select
-                            id="course" name="course">
-                            <option value="">Selecciona un curso</option>
-                            <option>Calcula tu Beneficio Real</option>
-                            <option>Cómo Aumentar tus Beneficios</option>
-                            <option>Ambos</option>
-                        </select></div><label class="check-field form-wide"><input type="checkbox" required><span>He
+                    <fieldset class="form-field form-choice-group form-wide">
+                        <legend>¿Qué formación te interesa?</legend>
+                        <div class="form-choice-options">
+                            <label class="check-field"><input type="checkbox" name="interest" value="Calcula tu Beneficio Real"><span>Calcula tu Beneficio Real</span></label>
+                            <label class="check-field"><input type="checkbox" name="interest" value="Cómo Aumentar tus Beneficios"><span>Cómo Aumentar tus Beneficios</span></label>
+                            <label class="check-field"><input type="checkbox" name="interest" value="Formación para tu empresa"><span>Formación para tu empresa</span></label>
+                            <label class="check-field"><input type="checkbox" name="interest" value="Otra formación"><span>Otra formación</span></label>
+                        </div>
+                    </fieldset>
+                    <div class="form-field form-wide"><label for="needs">Cuéntame brevemente qué necesitas</label><textarea
+                            id="needs" name="needs" rows="5"></textarea></div><label class="check-field form-wide"><input
+                            type="checkbox" name="privacy" required><span>He
                             leído y acepto la Política de Privacidad.</span></label>
-                    <p class="form-note form-wide">Solo los usaré para enviarte información sobre formaciones.</p><button class="btn btn--primary form-wide">Quiero información</button>
+                    <p class="form-note form-wide">Solo los usaré para enviarte información sobre formaciones.</p><button type="submit" class="btn btn--primary form-wide">Quiero información</button>
                     <p class="form-message form-message--success form-wide" role="status">Gracias. Te enviaré información sobre las formaciones.</p>
                 </form>
             </div>
@@ -113,7 +117,7 @@
         <section class="cta-band" data-theme="dark">
             <div class="container cta-band__inner">
                 <div>
-                    <p class="eyebrow">Empieza hoy</p>
+                    <p class="eyebrow">Mientras tanto</p>
                     <h2>Empieza a ordenar tus finanzas hoy.</h2>
                 </div>
                 <div>
@@ -161,7 +165,7 @@
         <span>© 2026 Chusa Fernández · Oviedo, Asturias</span>
         <span class="footer-claim">Del caos a la claridad. De la claridad, a la libertad.</span>
       </div>
-      <p class="footer-disclaimer">Los servicios ofrecidos tienen carácter educativo y de acompañamiento estratégico y financiero. Cuando procede, facilito información y acceso a oportunidades de inversión en economía real a través de entidades o colaboradores especializados. La decisión final corresponde siempre al inversor.</p>
+      <p class="footer-disclaimer">Esto no es asesoramiento financiero. Es educación y acompañamiento estratégico. Chusa Fernández Villamil no es asesora registrada ante la CNMV ni recomienda productos de inversión. Las decisiones sobre tu dinero son siempre tuyas.</p>
     </div>
   </footer>
     <script src="assets/js/alquimia.js"></script>

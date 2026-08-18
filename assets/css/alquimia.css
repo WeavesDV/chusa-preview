@@ -929,6 +929,12 @@ html:where(:not(.home)) .timeline h3 { font-size: clamp(1.2rem, 1.7vw, 1.5rem); 
   background: var(--bg-primary);
   box-shadow: 0 1rem 2.75rem rgba(37, 29, 51, .12);
 }
+
+.form-choice-group { margin: 0; padding: 0; border: 0; }
+.form-choice-group legend { margin-bottom: var(--space-xs); font-size: .875rem; font-weight: 600; }
+.form-choice-options { display: grid; gap: var(--space-2xs); }
+.form-choice-options .check-field { min-height: 44px; border: 1px solid var(--neutral-500); border-radius: var(--radius-sm); background: var(--bg-elevated); }
+.form-choice-options .check-field:focus-within { outline: 2px solid var(--gold-primary); outline-offset: 2px; }
 :is(.form-shell, .contact-form, .lead-form) > h2 { margin-bottom: calc(-1 * var(--space-2xs)); }
 
 /* etiquetas en el mismo lenguaje que los eyebrow y los rotulos del footer */

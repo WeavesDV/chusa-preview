@@ -275,13 +275,23 @@ html:where(:not(.home)) [data-theme="dark"] .btn--primary:hover { background: va
 .home .container { width: min(calc(100% - 40px), var(--container)); margin-inline: auto; }
 .home .eyebrow { margin: 0; color: var(--gold); font-size: 11px; font-weight: 600; letter-spacing: .15em; line-height: 1.3; text-transform: uppercase; }
 .home .display { font-family: var(--font-serif); font-weight: 500; letter-spacing: -.025em; }
-.home .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--rule); background-color: var(--paper); background-image: url("../../lumen-images/hero-principal-horizontal/hero-1920.webp"); background-position: right center; background-repeat: no-repeat; background-size: cover; }
+.home .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--rule); background-color: var(--paper); background-image: url("../../lumen-images/hero-principal-horizontal/hero-1920.webp"); background-position: 150px center; background-repeat: no-repeat; background-size: cover; }
 /* El velo crema tiene que cubrir el texto (llega al 50% del ancho) y soltar
    la foto cuanto antes: Chusa ocupa del 37% al 82% y su cara empieza en el
    55%. La rampa larga anterior seguia al 42% encima de la cara. Ahora la
    zona densa aguanta mas a la derecha (.90 en el 50%, donde acaba el texto)
    y la caida es corta, con transparencia total en el 63% en vez del 70%. */
 .home .hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(96deg, rgba(247, 242, 233, .99) 0%, rgba(247, 242, 233, .97) 42%, rgba(247, 242, 233, .90) 50%, rgba(247, 242, 233, .38) 56%, rgba(247, 242, 233, 0) 63%); }
+
+/* El empujon fijo de 150px solo vale cuando la foto cubre el ancho justo, que
+   pasa a partir de ~1351px (760px de alto x 16:9). Por debajo la foto sobra a
+   lo ancho y ese mismo empujon la saca de cuadro: a 900px la cara de Chusa
+   empezaba en el 99% del ancho, es decir, fuera de pantalla. Centrada, en todo
+   ese tramo la cara cae entre el 55% y el 58%, que es justo donde el velo ya
+   se ha abierto. */
+@media (max-width: 1360px) {
+  .home .hero { background-position-x: center; }
+}
 .home .hero-grid { position: relative; z-index: 1; min-height: 760px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: stretch; }
 .home .hero-copy { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 36px; align-content: center; padding: 76px 0 104px; }
 .home .transformation-axis { --axis-col: 14px; position: relative; display: grid; align-content: space-between; justify-items: start; align-self: center; height: 460px; margin: 0; padding: 4px 0 22px; list-style: none; }

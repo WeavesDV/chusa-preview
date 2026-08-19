@@ -276,7 +276,12 @@ html:where(:not(.home)) [data-theme="dark"] .btn--primary:hover { background: va
 .home .eyebrow { margin: 0; color: var(--gold); font-size: 11px; font-weight: 600; letter-spacing: .15em; line-height: 1.3; text-transform: uppercase; }
 .home .display { font-family: var(--font-serif); font-weight: 500; letter-spacing: -.025em; }
 .home .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--rule); background-color: var(--paper); background-image: url("../../lumen-images/hero-principal-horizontal/hero-1920.webp"); background-position: right center; background-repeat: no-repeat; background-size: cover; }
-.home .hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(96deg, rgba(247, 242, 233, .99) 0%, rgba(247, 242, 233, .97) 34%, rgba(247, 242, 233, .88) 46%, rgba(247, 242, 233, .42) 58%, rgba(247, 242, 233, 0) 70%); }
+/* El velo crema tiene que cubrir el texto (llega al 50% del ancho) y soltar
+   la foto cuanto antes: Chusa ocupa del 37% al 82% y su cara empieza en el
+   55%. La rampa larga anterior seguia al 42% encima de la cara. Ahora la
+   zona densa aguanta mas a la derecha (.90 en el 50%, donde acaba el texto)
+   y la caida es corta, con transparencia total en el 63% en vez del 70%. */
+.home .hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(96deg, rgba(247, 242, 233, .99) 0%, rgba(247, 242, 233, .97) 42%, rgba(247, 242, 233, .90) 50%, rgba(247, 242, 233, .38) 56%, rgba(247, 242, 233, 0) 63%); }
 .home .hero-grid { position: relative; z-index: 1; min-height: 760px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: stretch; }
 .home .hero-copy { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 36px; align-content: center; padding: 76px 0 104px; }
 .home .transformation-axis { --axis-col: 14px; position: relative; display: grid; align-content: space-between; justify-items: start; align-self: center; height: 460px; margin: 0; padding: 4px 0 22px; list-style: none; }
@@ -1006,6 +1011,11 @@ html:where(:not(.home)) .timeline h3 { font-size: clamp(1.2rem, 1.7vw, 1.5rem); 
 .faq-index li:last-child a { border-bottom: 1px solid var(--neutral-600); }
 .faq-index a:hover { color: var(--gold-primary); }
 
+/* La cabecera es sticky: sin esto, cualquier destino de ancla (#descarga,
+   #aviso, #formaciones, los grupos del FAQ) queda tapado por ella al saltar.
+   Misma altura de referencia que ya usaba .faq-group. */
+:target { scroll-margin-top: calc(88px + var(--space-lg)); }
+
 .faq-group { scroll-margin-top: calc(88px + var(--space-lg)); }
 .faq-group + .faq-group { margin-top: var(--space-2xl); }
 .faq-group__title {
@@ -1192,3 +1202,419 @@ html:where(:not(.home)) .timeline h3 { font-size: clamp(1.2rem, 1.7vw, 1.5rem); 
   color: var(--text-secondary);
 }
 .diagnostico #result-secondary[hidden] { display: none; }
+
+/* ==========================================================================
+   CURSOS  ·  pagina de venta de las formaciones
+   Todo va scopeado con .cursos (clase en <html>) igual que .servicios y .home,
+   para que estos componentes no se filtren a las otras paginas.
+   Recorrido: hero -> dolor -> oferta -> como funciona -> encaje -> equipos ->
+   formulario. Cada bloque alterna superficie para que se lean como pasos.
+   ========================================================================== */
+.cursos main { background: var(--bg-primary); }
+
+/* ---- Hero ---- */
+.cursos .cursos__hero {
+  position: relative;
+  overflow: clip;
+  padding-block: clamp(4rem, 8vw, 7rem);
+  background:
+    radial-gradient(circle at 88% 12%, rgba(201, 169, 97, .2), transparent 28rem),
+    var(--purple-primary);
+}
+.cursos .cursos__hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 1px;
+  background: rgba(201, 169, 97, .55);
+}
+.cursos .cursos__hero .page-hero__grid { position: relative; z-index: 1; }
+/* la nota de disponibilidad baja de lead a pie de hero: informa, no vende */
+.cursos .cursos__hero-note {
+  max-width: 46ch;
+  margin: var(--space-md) 0 0;
+  padding-top: var(--space-sm);
+  border-top: 1px solid rgba(201, 169, 97, .3);
+  color: var(--text-secondary);
+  font-size: .9rem;
+}
+
+/* ---- Dolor · las frases del cliente antes de la oferta ---- */
+.cursos .cursos__pain { background: var(--bg-secondary); }
+.cursos .cursos__pain .section__head { margin-bottom: var(--space-lg); }
+.cursos .cursos__pain h2 { max-width: 20ch; text-wrap: balance; }
+.pain-grid {
+  display: grid; gap: var(--space-md);
+  margin: 0; padding: 0; list-style: none;
+}
+.pain-card {
+  position: relative;
+  display: grid; align-content: start; gap: var(--space-sm);
+  padding: clamp(1.5rem, 2.5vw, 2rem);
+  border: 1px solid rgba(113, 90, 36, .3);
+  border-radius: var(--radius-lg);
+  background: var(--bg-primary);
+}
+.pain-card__mark {
+  color: var(--gold-primary);
+  font: 500 .7rem/1 var(--font-mono); letter-spacing: .14em;
+}
+.pain-card__quote {
+  max-width: 24ch; margin: 0;
+  color: var(--purple-primary);
+  font: italic 500 clamp(1.15rem, 2vw, 1.4rem)/1.32 var(--font-serif);
+  letter-spacing: -.015em;
+}
+.pain-close {
+  max-width: 44ch; margin: var(--space-lg) 0 0; padding-top: var(--space-md);
+  border-top: 1px solid var(--gold-primary);
+  color: var(--text-primary);
+  font: 500 clamp(1.4rem, 2.4vw, 1.9rem)/1.25 var(--font-serif);
+  letter-spacing: -.02em;
+}
+
+/* ---- Oferta · cada curso es una ficha de venta, no una tarjeta de texto ---- */
+.course-list { display: grid; gap: var(--space-lg); }
+.course-card {
+  position: relative;
+  display: grid; gap: var(--space-md);
+  overflow: hidden;
+  padding: clamp(1.5rem, 3vw, 2.75rem);
+  border: 1px solid rgba(113, 90, 36, .38);
+  border-radius: var(--radius-lg);
+  background: var(--bg-primary);
+  box-shadow: 0 .75rem 2rem rgba(58, 45, 90, .08);
+}
+/* filete dorado superior solo en la ficha destacada: una jerarquia, no dos */
+.course-card--featured::before {
+  content: "";
+  position: absolute; inset-inline: 0; top: 0;
+  height: 3px; background: var(--gold-primary);
+}
+.course-card__index {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-sm);
+  margin: 0 0 var(--space-sm);
+}
+.course-card__num {
+  color: var(--gold-primary);
+  font: 500 .8rem/1 var(--font-mono); letter-spacing: .16em;
+}
+.cursos .course-card h3 {
+  margin: 0 0 var(--space-sm);
+  color: var(--purple-primary);
+  text-wrap: balance;
+}
+.course-card__claim {
+  max-width: 32ch; margin: 0 0 var(--space-sm);
+  color: var(--purple-primary);
+  font: 500 clamp(1.15rem, 2vw, 1.5rem)/1.28 var(--font-serif);
+  letter-spacing: -.015em;
+}
+.course-card__main > p { margin: 0 0 var(--space-sm); color: var(--text-secondary); }
+.course-card__main > p:last-child { margin-bottom: 0; }
+/* la promesa de resultado se separa del cuerpo con un filete lateral */
+.course-card__main > .course-card__promise {
+  padding-left: var(--space-sm);
+  border-left: 2px solid var(--gold-primary);
+  color: var(--text-primary);
+}
+.course-card__aside {
+  display: grid; align-content: start; gap: var(--space-md);
+  padding: clamp(1.25rem, 2vw, 1.75rem);
+  border: 1px solid rgba(113, 90, 36, .28);
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+}
+.cursos .course-card__aside h4 {
+  margin: 0;
+  color: var(--purple-primary);
+  font: 600 .78rem/1.3 var(--font-sans);
+  letter-spacing: .1em; text-transform: uppercase;
+}
+
+/* ---- Lista con icono · beneficios y criterios de encaje ---- */
+.check-list {
+  display: grid; gap: var(--space-xs);
+  margin: 0; padding: 0; list-style: none;
+}
+.check-list li {
+  display: grid; grid-template-columns: 1.25rem 1fr; gap: var(--space-2xs);
+  align-items: start;
+  color: var(--text-secondary);
+  font-size: .95rem; line-height: 1.55;
+}
+.check-list .icon {
+  width: 1.25rem; height: 1.25rem;
+  margin-top: .15rem;
+  color: var(--gold-primary);
+}
+.check-list--no .icon { color: var(--text-muted); }
+
+/* ---- Ficha de datos del curso ---- */
+.course-meta { display: grid; margin: 0; }
+.course-meta__row {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2xs);
+  padding-block: .55rem;
+  border-top: 1px solid rgba(113, 90, 36, .25);
+}
+.course-meta__row:last-child { border-bottom: 1px solid rgba(113, 90, 36, .25); }
+.course-meta dt {
+  color: var(--text-muted);
+  font-size: .7rem; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase;
+}
+.course-meta dd {
+  margin: 0;
+  color: var(--text-primary);
+  font: 500 .85rem/1.2 var(--font-mono);
+}
+
+/* ---- Como funciona · tres pasos numerados ---- */
+.cursos .cursos__how { background: var(--bg-tertiary); }
+.course-steps {
+  display: grid; gap: var(--space-md);
+  margin: 0; padding: 0; list-style: none;
+  counter-reset: paso;
+}
+.course-step {
+  position: relative;
+  display: grid; align-content: start;
+  padding: clamp(1.5rem, 2.5vw, 2.25rem);
+  border: 1px solid rgba(113, 90, 36, .3);
+  border-radius: var(--radius-lg);
+  background: var(--bg-primary);
+  box-shadow: 0 1rem 2.75rem rgba(37, 29, 51, .06);
+}
+.course-step__mark {
+  color: var(--gold-primary);
+  font: 500 .7rem/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase;
+}
+.cursos .course-step h3 {
+  margin: var(--space-sm) 0 var(--space-2xs);
+  color: var(--purple-primary);
+  font-size: 1.4rem; line-height: 1.2;
+}
+.course-step p {
+  max-width: 34ch; margin: 0;
+  color: var(--text-secondary);
+  font-size: .95rem; line-height: 1.7;
+}
+
+/* ---- Encaje · a quien sirve y a quien no ---- */
+.fit-grid { display: grid; gap: var(--space-md); }
+.fit-panel {
+  display: grid; align-content: start; gap: var(--space-md);
+  padding: clamp(1.5rem, 2.5vw, 2.25rem);
+  border: 1px solid rgba(113, 90, 36, .3);
+  border-radius: var(--radius-lg);
+  background: var(--bg-primary);
+}
+.fit-panel--yes { border-color: var(--gold-primary); }
+.cursos .fit-panel h3 {
+  margin: 0;
+  color: var(--purple-primary);
+  font: 600 .78rem/1.3 var(--font-sans);
+  letter-spacing: .1em; text-transform: uppercase;
+}
+
+/* ---- Equipos · el bloque B2B, en oscuro para que corte la pagina ---- */
+.cursos .cursos__equipos {
+  position: relative;
+  overflow: clip;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(201, 169, 97, .18), transparent 26rem),
+    var(--purple-primary);
+}
+.equipos-panel { display: grid; gap: var(--space-lg); align-items: center; }
+.cursos .equipos-panel h2 { max-width: 18ch; margin: var(--space-xs) 0 var(--space-sm); text-wrap: balance; }
+.equipos-panel__lead { color: var(--text-secondary); font-size: 1.05rem; }
+.equipos-list {
+  display: grid; gap: var(--space-sm);
+  margin: var(--space-lg) 0; padding: 0; list-style: none;
+}
+.equipos-list li {
+  display: grid; grid-template-columns: 2.25rem 1fr; gap: var(--space-sm);
+  align-items: start;
+  padding-top: var(--space-sm);
+  border-top: 1px solid rgba(201, 169, 97, .28);
+}
+.equipos-list__mark {
+  display: grid; place-items: center;
+  width: 2.25rem; height: 2.25rem;
+  border: 1px solid rgba(201, 169, 97, .55);
+  border-radius: 50%;
+  color: var(--gold-bright);
+  font: 500 .75rem/1 var(--font-mono);
+}
+.cursos .equipos-list h3 {
+  margin: 0 0 .2rem;
+  color: var(--text-primary);
+  font-size: 1.15rem; line-height: 1.25;
+}
+.equipos-list p { margin: 0; color: var(--text-secondary); font-size: .92rem; line-height: 1.6; }
+.equipos-panel__close {
+  max-width: 52ch;
+  color: var(--text-secondary);
+}
+.equipos-panel__media {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(201, 169, 97, .35);
+  border-radius: var(--radius-lg);
+  background: var(--bg-tertiary);
+}
+.equipos-panel__media img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ---- Formulario · copy de refuerzo a un lado, formulario al otro ---- */
+.form-split { display: grid; gap: var(--space-lg); align-items: start; }
+.cursos .form-split h2 { margin: var(--space-xs) 0 var(--space-sm); max-width: 14ch; }
+.form-split__reassure { margin-top: var(--space-md); }
+
+@media (min-width: 48rem) {
+  .cursos .cursos__hero .page-hero__grid { grid-template-columns: 1.05fr .95fr; gap: var(--space-xl); }
+  .fit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .equipos-panel { grid-template-columns: 1.05fr .95fr; gap: var(--space-xl); }
+}
+/* Tres columnas piden mas ancho que dos: las citas y los pasos se quedan en
+   tiras de ~14rem si se abren ya en 48rem. */
+@media (min-width: 56rem) {
+  .pain-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .course-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+/* La ficha de curso y el formulario del split se abren mas tarde: su segunda
+   columna (lista de beneficios / campos del formulario) no cabe antes. */
+@media (min-width: 48rem) and (max-width: 63.99rem) {
+  .cursos .form-split .lead-form { grid-template-columns: 1fr; }
+}
+@media (min-width: 64rem) {
+  .course-card { grid-template-columns: 1.35fr .65fr; gap: var(--space-xl); }
+  .form-split { grid-template-columns: .85fr 1.15fr; gap: var(--space-xl); }
+}
+@media (min-width: 32rem) {
+  .cursos .btn { width: auto; }
+}
+@media (max-width: 31.99rem) {
+  .cursos .actions { display: grid; }
+  .cursos .btn { width: 100%; white-space: normal; text-align: center; }
+}
+
+/* ==========================================================================
+   LEAD MAGNET  ·  landing del recurso gratuito
+   Solo tratamiento visual: el copy y el orden de las secciones no cambian.
+   Scopeado con .lead-magnet (clase en <html>), igual que .home/.servicios/.cursos.
+   ========================================================================== */
+.lead-magnet main { background: var(--bg-primary); }
+
+/* ---- Hero · mismo lenguaje que servicios y cursos ---- */
+.lead-magnet .lead-magnet__hero {
+  position: relative;
+  overflow: clip;
+  padding-block: clamp(4rem, 8vw, 7rem);
+  background:
+    radial-gradient(circle at 88% 12%, rgba(201, 169, 97, .2), transparent 28rem),
+    var(--purple-primary);
+}
+.lead-magnet .lead-magnet__hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 1px;
+  background: rgba(201, 169, 97, .55);
+}
+.lead-magnet .lead-magnet__hero .page-hero__grid { position: relative; z-index: 1; }
+.lead-magnet .lead-magnet__hero h1 { max-width: 15ch; text-wrap: balance; }
+.lead-magnet .lead-magnet__hero .page-hero__lead { max-width: 46ch; }
+.lead-magnet .lead-magnet__hero .page-hero__media {
+  border: 1px solid rgba(201, 169, 97, .35);
+  box-shadow: 0 1.5rem 3.5rem rgba(37, 29, 51, .3);
+}
+
+/* ---- Reparto a dos columnas · antes reutilizaba .page-hero__grid, que es
+        una pieza de hero. Aqui va una primitiva de layout con su nombre. ---- */
+.split-grid { display: grid; gap: var(--space-lg); align-items: center; }
+
+/* ---- Entregables · las dos piezas del recurso dejan de ser vinetas y pasan
+        a leerse como el inventario de lo que se descarga ---- */
+.lead-magnet .lead-magnet__deliverables h2 { max-width: 16ch; text-wrap: balance; }
+.lead-magnet .lead-magnet__deliverables .split-grid > div > p { color: var(--text-secondary); }
+.lead-magnet .feature-list {
+  gap: 0;
+  margin: var(--space-lg) 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: entregable;
+}
+/* li se queda en bloque normal (nada de grid/flex) para que <strong> pueda
+   pasar a bloque y el resto del texto caiga debajo como bloque anonimo. */
+.lead-magnet .feature-list li {
+  position: relative;
+  padding: var(--space-sm) 0 var(--space-sm) 3.5rem;
+  border-top: 1px solid rgba(113, 90, 36, .28);
+  color: var(--text-secondary);
+  font-size: .95rem; line-height: 1.6;
+}
+.lead-magnet .feature-list li:last-child { border-bottom: 1px solid rgba(113, 90, 36, .28); }
+.lead-magnet .feature-list li::before {
+  counter-increment: entregable;
+  content: counter(entregable, decimal-leading-zero);
+  position: absolute; left: 0; top: var(--space-sm);
+  display: grid; place-items: center;
+  width: 2.4rem; height: 2.4rem;
+  border: 1px solid var(--gold-primary); border-radius: 50%;
+  color: var(--gold-primary);
+  font: 500 .7rem/1 var(--font-mono); letter-spacing: .08em;
+}
+.lead-magnet .feature-list strong {
+  display: block;
+  margin-bottom: .15rem;
+  color: var(--purple-primary);
+  font: 500 1.2rem/1.25 var(--font-serif);
+  letter-spacing: -.015em;
+}
+
+/* ---- Es para ti si… · las tres tarjetas se numeran y ganan filete al pasar ---- */
+.lead-magnet .lead-magnet__fit .cards { counter-reset: motivo; }
+.lead-magnet .lead-magnet__fit .service-card {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(1.5rem, 2.5vw, 2.25rem);
+  border-color: rgba(113, 90, 36, .3);
+  box-shadow: 0 1rem 2.75rem rgba(37, 29, 51, .06);
+}
+.lead-magnet .lead-magnet__fit .service-card::before {
+  counter-increment: motivo;
+  content: counter(motivo, decimal-leading-zero);
+  color: var(--gold-primary);
+  font: 500 .7rem/1 var(--font-mono); letter-spacing: .14em;
+}
+.lead-magnet .lead-magnet__fit .service-card::after {
+  content: "";
+  position: absolute; inset-inline: 0; top: 0;
+  height: 1px; background: var(--gold-primary);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 260ms ease;
+}
+.lead-magnet .lead-magnet__fit .service-card:hover::after { transform: scaleX(1); }
+.lead-magnet .lead-magnet__fit .service-card h3 { color: var(--purple-primary); }
+.lead-magnet .lead-magnet__fit .service-card p { color: var(--text-secondary); font-size: .95rem; }
+
+/* ---- Descarga · es el destino de todos los CTA, asi que sube de superficie
+        y el formulario se remata en dorado para cerrar el recorrido ---- */
+.lead-magnet .lead-magnet__form { background: var(--bg-tertiary); }
+.lead-magnet .lead-magnet__form .lead-form {
+  border-color: var(--gold-primary);
+  box-shadow: 0 1.5rem 3.5rem rgba(37, 29, 51, .14);
+}
+.lead-magnet .lead-magnet__form .lead-form h2 {
+  margin: 0;
+  color: var(--purple-primary);
+  text-wrap: balance;
+}
+
+@media (min-width: 48rem) {
+  .split-grid { grid-template-columns: 1fr 1fr; gap: var(--space-xl); }
+}
+@media (max-width: 31.99rem) {
+  .lead-magnet .actions { display: grid; }
+  .lead-magnet .btn { width: 100%; white-space: normal; text-align: center; }
+}

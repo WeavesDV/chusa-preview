@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es" data-theme="light">
+<html class="cursos" lang="es" data-theme="light">
 
 <head>
     <meta charset="utf-8">
@@ -35,16 +35,17 @@
     </div>
   </header>
     <main id="main">
-        <section class="page-hero" data-theme="dark">
+        <section class="page-hero cursos__hero" data-theme="dark">
             <div class="container page-hero__grid">
                 <div>
                     <p class="eyebrow">Cursos online</p>
                     <h1>Formación práctica para autónomos y particulares</h1>
                     <p class="page-hero__lead">Formación práctica para autónomos y particulares que quieren entender mejor sus finanzas y tomar mejores decisiones.</p>
-                    <p class="page-hero__lead">La lección 1 ya está disponible. A medida que se incorporen participantes, se liberarán las siguientes lecciones durante las semanas posteriores.</p>
                     <div class="actions">
-                        <a class="btn btn--primary" href="#aviso">Quiero información</a>
+                        <a class="btn btn--primary" href="#formaciones">Ver las formaciones</a>
+                        <a class="btn btn--ghost" href="#aviso">Quiero información</a>
                     </div>
+                    <p class="cursos__hero-note">La lección 1 ya está disponible. A medida que se incorporen participantes, se liberarán las siguientes lecciones durante las semanas posteriores.</p>
                 </div>
                 <figure class="page-hero__media"><img
                         src="lumen-images/conferencia-speaking/speaking-1280.webp"
@@ -52,68 +53,211 @@
                         alt="Chusa Fernández impartiendo una formación, micrófono en mano"></figure>
             </div>
         </section>
-        <section class="section">
+
+        <section class="section cursos__pain" aria-labelledby="pain-heading">
+            <div class="container">
+                <div class="section__head">
+                    <p class="eyebrow">El punto de partida</p>
+                    <h2 id="pain-heading">Facturas. Trabajas. Y aun así no sabes qué ganas.</h2>
+                </div>
+                <ul class="pain-grid">
+                    <li class="pain-card">
+                        <span class="pain-card__mark">01</span>
+                        <p class="pain-card__quote">«Sé lo que facturo, pero no sé lo que gano.»</p>
+                    </li>
+                    <li class="pain-card">
+                        <span class="pain-card__mark">02</span>
+                        <p class="pain-card__quote">«Llego a final de mes y me pregunto: ¿dónde está el dinero?»</p>
+                    </li>
+                    <li class="pain-card">
+                        <span class="pain-card__mark">03</span>
+                        <p class="pain-card__quote">«Trabajo mucho, pero el esfuerzo no se refleja en mis beneficios.»</p>
+                    </li>
+                </ul>
+                <p class="pain-close">Si alguna de estas frases es tuya, el problema no es cuánto trabajas. Es que decides sin ver tus números.</p>
+            </div>
+        </section>
+
+        <section id="formaciones" class="section cursos__courses" aria-labelledby="formaciones-heading">
             <div class="container">
                 <div class="section__head">
                     <p class="eyebrow">Formaciones disponibles</p>
-                    <h2>Contenido para decidir con más claridad</h2>
+                    <h2 id="formaciones-heading">Contenido para decidir con más claridad</h2>
                     <p class="muted">Empieza por la primera lección y avanza con las siguientes a medida que se vayan liberando.</p>
                 </div>
-                <div class="cards cards--2">
-                    <article class="service-card"><span class="badge">Disponible online</span>
-                        <h3>Calcula tu Beneficio Real y Deja de Trabajar a Ciegas</h3>
-                        <p><strong>De la incertidumbre a la claridad financiera total.</strong></p>
-                        <p>Descubre cuánto dinero ganas realmente con tu negocio, dónde se te está escapando y qué puedes hacer para mejorar tu rentabilidad.</p>
-                        <p>Para autónomos que facturan, pero llegan a final de mes preguntándose: «¿Dónde está el dinero?». Aprende a conocer tus números, detectar fugas y tomar decisiones con datos, no con intuición.</p>
-                        <p>En pocas horas pasarás de «sé lo que facturo, pero no sé lo que gano» a tener claro cuánto gana realmente tu negocio, sin complicarte ni depender de nadie.</p>
-                        <p class="mono">Online · Lección 1 disponible</p><a href="#aviso">Quiero información sobre este curso</a>
+                <div class="course-list">
+                    <article class="course-card course-card--featured" aria-labelledby="curso-1">
+                        <div class="course-card__main">
+                            <p class="course-card__index"><span class="course-card__num">01</span><span class="badge">Disponible online</span></p>
+                            <h3 id="curso-1">Calcula tu Beneficio Real y Deja de Trabajar a Ciegas</h3>
+                            <p class="course-card__claim">De la incertidumbre a la claridad financiera total.</p>
+                            <p>Descubre cuánto dinero ganas realmente con tu negocio, dónde se te está escapando y qué puedes hacer para mejorar tu rentabilidad.</p>
+                            <p>Para autónomos que facturan, pero llegan a final de mes preguntándose: «¿Dónde está el dinero?». Aprende a conocer tus números, detectar fugas y tomar decisiones con datos, no con intuición.</p>
+                            <p class="course-card__promise">En pocas horas pasarás de «sé lo que facturo, pero no sé lo que gano» a tener claro cuánto gana realmente tu negocio, sin complicarte ni depender de nadie.</p>
+                        </div>
+                        <div class="course-card__aside">
+                            <h4>Al terminar vas a poder</h4>
+                            <ul class="check-list">
+                                <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg><span>Saber cuánto gana tu negocio, no solo cuánto factura.</span></li>
+                                <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg><span>Detectar por dónde se te está escapando el dinero.</span></li>
+                                <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg><span>Decidir con datos en la mano, no con intuición.</span></li>
+                                <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg><span>Hacerlo tú, sin depender de nadie.</span></li>
+                            </ul>
+                            <dl class="course-meta">
+                                <div class="course-meta__row"><dt>Modalidad</dt><dd>Online</dd></div>
+                                <div class="course-meta__row"><dt>Ritmo</dt><dd>A tu ritmo</dd></div>
+                                <div class="course-meta__row"><dt>Estado</dt><dd>Lección 1 disponible</dd></div>
+                            </dl>
+                            <a class="btn btn--primary" href="#aviso">Quiero información sobre este curso</a>
+                        </div>
                     </article>
-                    <article class="service-card"><span class="badge">Disponible online</span>
-                        <h3>Cómo Aumentar tus Beneficios en 3 Meses sin Intercambiar Más Tiempo por Dinero</h3>
-                        <p>Aprende a mejorar la rentabilidad de tu negocio optimizando precios, costes y servicios, para ganar más sin tener que trabajar más horas.</p>
-                        <p>Para autónomos, emprendedores y pequeños negocios que trabajan mucho y facturan, pero sienten que el esfuerzo no se refleja en sus beneficios.</p>
-                        <p class="mono">Online · Lección 1 disponible</p><a href="#aviso">Quiero información sobre este curso</a>
+                    <article class="course-card" aria-labelledby="curso-2">
+                        <div class="course-card__main">
+                            <p class="course-card__index"><span class="course-card__num">02</span><span class="badge">Disponible online</span></p>
+                            <h3 id="curso-2">Cómo Aumentar tus Beneficios en 3 Meses sin Intercambiar Más Tiempo por Dinero</h3>
+                            <p class="course-card__claim">Más beneficio, sin sumar más horas.</p>
+                            <p>Aprende a mejorar la rentabilidad de tu negocio optimizando precios, costes y servicios, para ganar más sin tener que trabajar más horas.</p>
+                            <p>Para autónomos, emprendedores y pequeños negocios que trabajan mucho y facturan, pero sienten que el esfuerzo no se refleja en sus beneficios.</p>
+                        </div>
+                        <div class="course-card__aside">
+                            <h4>Al terminar vas a poder</h4>
+                            <ul class="check-list">
+                                <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg><span>Revisar tus precios con criterio y sin miedo.</span></li>
+                                <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg><span>Identificar los costes que no te devuelven nada.</span></li>
+                                <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg><span>Enfocarte en los servicios que de verdad te rentan.</span></li>
+                                <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg><span>Ganar más sin ampliar tu jornada.</span></li>
+                            </ul>
+                            <dl class="course-meta">
+                                <div class="course-meta__row"><dt>Modalidad</dt><dd>Online</dd></div>
+                                <div class="course-meta__row"><dt>Ritmo</dt><dd>A tu ritmo</dd></div>
+                                <div class="course-meta__row"><dt>Estado</dt><dd>Lección 1 disponible</dd></div>
+                            </dl>
+                            <a class="btn btn--primary" href="#aviso">Quiero información sobre este curso</a>
+                        </div>
                     </article>
                 </div>
             </div>
         </section>
-        <section class="section">
-            <div class="container narrow">
+
+        <section class="section cursos__how" aria-labelledby="how-heading">
+            <div class="container">
                 <div class="section__head">
-                    <p class="eyebrow">Formación para equipos</p>
-                    <h2>¿Quieres llevar la educación financiera a tu empresa u organización?</h2>
-                    <p class="muted">Diseño formaciones adaptadas a las necesidades de empresas, organizaciones y equipos, con un enfoque práctico y aplicable al día a día.</p>
-                    <p class="muted">Si quieres ayudar a tu equipo a mejorar su relación con el dinero, tomar mejores decisiones financieras y ganar tranquilidad, cuéntame qué necesitas y diseñamos juntos la formación que mejor encaje con vuestro equipo.</p>
-                    <div class="actions"><a class="btn btn--primary" href="#aviso">Quiero diseñar una formación para mi equipo</a></div>
+                    <p class="eyebrow">Cómo funciona</p>
+                    <h2 id="how-heading">Tres pasos y ya estás dentro</h2>
+                </div>
+                <ol class="course-steps">
+                    <li class="course-step">
+                        <span class="course-step__mark">Paso 01</span>
+                        <h3>Me dices qué te interesa</h3>
+                        <p>Rellenas el formulario con tu nombre, tu email y la formación que quieres. Nada más.</p>
+                    </li>
+                    <li class="course-step">
+                        <span class="course-step__mark">Paso 02</span>
+                        <h3>Empiezas por la lección 1</h3>
+                        <p>Ya está disponible. La ves cuando quieras, a tu ritmo y desde donde te venga bien.</p>
+                    </li>
+                    <li class="course-step">
+                        <span class="course-step__mark">Paso 03</span>
+                        <h3>Avanzas con el resto</h3>
+                        <p>A medida que se incorporan participantes, se liberan las siguientes lecciones durante las semanas posteriores.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="section section--alt cursos__fit" aria-labelledby="fit-heading">
+            <div class="container">
+                <div class="section__head">
+                    <p class="eyebrow">Antes de apuntarte</p>
+                    <h2 id="fit-heading">Para saber si esto encaja contigo</h2>
+                </div>
+                <div class="fit-grid">
+                    <div class="fit-panel fit-panel--yes">
+                        <h3>Esto es para ti si</h3>
+                        <ul class="check-list">
+                            <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg><span>Facturas, pero no sabes con certeza cuánto ganas.</span></li>
+                            <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg><span>Quieres entender tus números sin convertirte en contable.</span></li>
+                            <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg><span>Prefieres decidir con datos antes que con intuición.</span></li>
+                            <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg><span>Quieres ganar autonomía sobre tu dinero.</span></li>
+                        </ul>
+                    </div>
+                    <div class="fit-panel fit-panel--no">
+                        <h3>Esto no es para ti si</h3>
+                        <ul class="check-list check-list--no">
+                            <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Buscas recomendaciones de productos de inversión: esto es educación financiera, no asesoramiento.</span></li>
+                            <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Esperas resultados sin mirar tus propios números.</span></li>
+                            <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Prefieres delegarlo todo y no implicarte en la gestión.</span></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
-        <section id="aviso" class="section section--alt">
-            <div class="container narrow">
+
+        <section class="section cursos__equipos" data-theme="dark" aria-labelledby="equipos-heading">
+            <div class="container equipos-panel">
+                <div class="equipos-panel__copy">
+                    <p class="eyebrow">Formación para equipos</p>
+                    <h2 id="equipos-heading">Lleva la educación financiera a tu empresa u organización</h2>
+                    <p class="equipos-panel__lead">Diseño formaciones adaptadas a las necesidades de empresas, organizaciones y equipos, con un enfoque práctico y aplicable al día a día.</p>
+                    <ul class="equipos-list">
+                        <li>
+                            <span class="equipos-list__mark">A</span>
+                            <div><h3>Empresas</h3><p>Programas para cuidar el bienestar financiero de la plantilla.</p></div>
+                        </li>
+                        <li>
+                            <span class="equipos-list__mark">B</span>
+                            <div><h3>Organizaciones y asociaciones</h3><p>Sesiones de educación financiera para socios y colectivos.</p></div>
+                        </li>
+                        <li>
+                            <span class="equipos-list__mark">C</span>
+                            <div><h3>Equipos</h3><p>Formación a medida para quienes toman decisiones con impacto económico.</p></div>
+                        </li>
+                    </ul>
+                    <p class="equipos-panel__close">Si quieres ayudar a tu equipo a mejorar su relación con el dinero, tomar mejores decisiones financieras y ganar tranquilidad, cuéntame qué necesitas y diseñamos juntos la formación que mejor encaje.</p>
+                    <div class="actions">
+                        <a class="btn btn--primary" href="contacto.html">Cuéntame qué necesita tu equipo</a>
+                        <a class="btn btn--ghost" href="agendar.html">Agendar una conversación</a>
+                    </div>
+                </div>
+                <figure class="equipos-panel__media">
+                    <img src="lumen-images/asesoria-educativa/002---18ef0ac9-6a89-468f-b7a3-a3aa15eb4ba7---v1-1080.webp"
+                        width="1080" height="810" loading="lazy" decoding="async"
+                        alt="Chusa Fernández explicando conceptos financieros a un grupo">
+                </figure>
+            </div>
+        </section>
+
+        <section id="aviso" class="section section--alt cursos__form" aria-labelledby="aviso-heading">
+            <div class="container form-split">
+                <div class="form-split__copy">
+                    <p class="eyebrow">Siguiente paso</p>
+                    <h2 id="aviso-heading">Quiero información</h2>
+                    <p class="muted">Dime qué formación te interesa y te cuento cómo funciona, qué incluye y cuándo se liberan las siguientes lecciones.</p>
+                    <ul class="check-list form-split__reassure">
+                        <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg><span>Sin compromiso: pides información, no te apuntas a nada.</span></li>
+                        <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg><span>Te escribo yo, no un embudo automático.</span></li>
+                        <li><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 13 4 4L19 7"/></svg><span>Tus datos solo se usan para esto.</span></li>
+                    </ul>
+                </div>
                 <form class="lead-form" data-demo>
-                    <h2 class="form-wide">Quiero información</h2>
                     <div class="form-field"><label for="name">Nombre *</label><input id="name" name="name"
                             autocomplete="name" placeholder="Tu nombre" required></div>
                     <div class="form-field"><label for="email">Email *</label><input id="email" name="email"
                             type="email" autocomplete="email" placeholder="tu@email.com" required></div>
-                    <fieldset class="form-field form-choice-group form-wide">
-                        <legend>¿Qué formación te interesa?</legend>
-                        <div class="form-choice-options">
-                            <label class="check-field"><input type="checkbox" name="interest" value="Calcula tu Beneficio Real"><span>Calcula tu Beneficio Real</span></label>
-                            <label class="check-field"><input type="checkbox" name="interest" value="Cómo Aumentar tus Beneficios"><span>Cómo Aumentar tus Beneficios</span></label>
-                            <label class="check-field"><input type="checkbox" name="interest" value="Formación para tu empresa"><span>Formación para tu empresa</span></label>
-                            <label class="check-field"><input type="checkbox" name="interest" value="Otra formación"><span>Otra formación</span></label>
-                        </div>
-                    </fieldset>
-                    <div class="form-field form-wide"><label for="needs">Cuéntame brevemente qué necesitas</label><textarea
-                            id="needs" name="needs" rows="5"></textarea></div><label class="check-field form-wide"><input
-                            type="checkbox" name="privacy" required><span>He
+                    <div class="form-field form-wide"><label for="course">¿Qué curso te interesa?</label><select
+                            id="course" name="course">
+                            <option value="">Selecciona un curso</option>
+                            <option>Calcula tu Beneficio Real</option>
+                            <option>Cómo Aumentar tus Beneficios</option>
+                            <option>Ambos</option>
+                        </select></div><label class="check-field form-wide"><input type="checkbox" required><span>He
                             leído y acepto la Política de Privacidad.</span></label>
-                    <p class="form-note form-wide">Solo los usaré para enviarte información sobre formaciones.</p><button type="submit" class="btn btn--primary form-wide">Quiero información</button>
+                    <p class="form-note form-wide">Solo los usaré para enviarte información sobre formaciones.</p><button class="btn btn--primary form-wide">Quiero información</button>
                     <p class="form-message form-message--success form-wide" role="status">Gracias. Te enviaré información sobre las formaciones.</p>
                 </form>
             </div>
         </section>
+
         <section class="cta-band" data-theme="dark">
             <div class="container cta-band__inner">
                 <div>
